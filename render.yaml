@@ -1,0 +1,10 @@
+services:
+  - type: web
+    name: netflix-analytics-dashboard
+    env: python
+    buildCommand: "pip install -r requirements.txt"
+    startCommand: "streamlit run netflix_dashboard.py --server.port $PORT --server.address 0.0.0.0"
+    plan: free
+    envVars:
+      - key: PORT
+        value: 10000 

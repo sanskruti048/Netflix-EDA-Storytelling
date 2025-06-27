@@ -78,19 +78,6 @@ streamlit run netflix_dashboard.py
 
 ---
 
-## License
-
-This project is licensed under the MIT License - see the LICENSE file for details.
-
-## Acknowledgments
-
-- Netflix for providing the dataset
-- Streamlit for the amazing framework
-- Plotly for interactive visualizations
-- The open-source community for various tools and libraries
-
----
-
 ## 👤 Author
 
 **Sanskruti Sugandhi**  

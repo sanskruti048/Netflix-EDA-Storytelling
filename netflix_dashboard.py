@@ -8,8 +8,11 @@ from wordcloud import WordCloud, STOPWORDS
 import numpy as np
 from datetime import datetime
 import seaborn as sns
+import os
 
 # Set page configuration
+if 'PORT' in os.environ:
+    st.runtime.scriptrunner.script_run_context.get_script_run_ctx()._main_dg._set_server_port(int(os.environ['PORT']))
 st.set_page_config(
     page_title="Netflix Analytics Dashboard",
     page_icon="🎬",
