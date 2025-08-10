@@ -11,8 +11,6 @@ import seaborn as sns
 import os
 
 # Set page configuration
-if 'PORT' in os.environ:
-    st.runtime.scriptrunner.script_run_context.get_script_run_ctx()._main_dg._set_server_port(int(os.environ['PORT']))
 st.set_page_config(
     page_title="Netflix Analytics Dashboard",
     page_icon="🎬",
@@ -169,21 +167,19 @@ st.markdown("""
 
 # Load dataset
 @st.cache_data
-def load_data():
-    try:
-        df = pd.read_csv("netflix_titles.csv")
-        df['date_added'] = pd.to_datetime(df['date_added'], errors='coerce')
-        df['year_added'] = df['date_added'].dt.year
-        df['month_added'] = df['date_added'].dt.month
-        df['listed_in'] = df['listed_in'].astype(str)
-        df['country'] = df['country'].fillna('Unknown')
-        df['rating'] = df['rating'].fillna('Unknown')
-        df['duration'] = df['duration'].fillna('0 min')
-        df['duration_min'] = df['duration'].apply(lambda x: int(str(x).split()[0]) if 'min' in str(x) else 0)
-        return df
-    except Exception as e:
-        st.error(f"Error loading data: {str(e)}")
-        return pd.DataFrame()
+def load_data(path="netflix_titles.csv"):
+    df = pd.read_csv(path)
+    df['date_added'] = pd.to_datetime(df['date_added'], errors='coerce')
+    df['year_added'] = df['date_added'].dt.year
+    df['month_added'] = df['date_added'].dt.month
+    df['listed_in'] = df['listed_in'].astype(str)
+    df['country'] = df['country'].fillna('Unknown')
+    df['rating'] = df['rating'].fillna('Unknown')
+    df['duration'] = df['duration'].fillna('0 min')
+    df['duration_min'] = df['duration'].apply(
+        lambda x: int(str(x).split()[0]) if 'min' in str(x) else 0
+    )
+    return df
 
 df = load_data()
 
