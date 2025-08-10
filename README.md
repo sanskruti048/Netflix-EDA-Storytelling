@@ -5,6 +5,13 @@ Explore global trends, viewer preferences, and platform insights with data story
 
 ---
 
+## Live Demo
+
+🔎 [netflix-eda-storytelling.onrender.com](https://netflix-eda-storytelling.onrender.com)
+
+---
+
+
 ## 🔍 Overview
 
 This project performs an in-depth Exploratory Data Analysis (EDA) on the Netflix dataset to uncover trends in content types, genres, ratings, release years, and more. It uses Python and Streamlit to convert raw data into interactive, insightful visualizations.
